@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import ProjectCard from '../components/ProjectCard.astro'
-const allProjects = await Astro.glob('./projects/*.md')
+//const allProjects = await Astro.glob('./projects/*.md')
 const pageTitle = 'Some of my projects'
 ---
 
@@ -10,7 +10,7 @@ const pageTitle = 'Some of my projects'
     <div class="projects">
         <ul>
             {
-                allProjects.map((post) => (
+                /*                 allProjects.map((post) => (
                     <ul role="list" class="link-card-grid">
                         <ProjectCard
                             title={post.frontmatter.title}
@@ -19,7 +19,7 @@ const pageTitle = 'Some of my projects'
                             link={post.frontmatter.link}
                         />
                     </ul>
-                ))
+                ))*/
             }
         </ul>
     </div>
