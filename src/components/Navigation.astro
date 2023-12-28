@@ -1,0 +1,91 @@
+---
+
+---
+
+<div class="nav">
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/about_me">About me</a>
+        <a href="/projects">Projects</a>
+    </div>
+    <div class="box">
+        <a href="/documents/Romain_PIERRE_CV.pdf" target="_blank ">Resume/CV</a>
+    </div>
+</div>
+
+<style>
+    .nav {
+        margin-left: 5em;
+        display: flex;
+        width: auto;
+    }
+
+    .nav-links a {
+        color: white;
+        display: inline-block;
+        text-align: center;
+        padding: 15px 20px;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        position: relative;
+    }
+
+    .nav-links a:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: transparent;
+        bottom: 0;
+        left: 0;
+        transition:
+            background-color 0.3s,
+            transform 0.3s;
+        transform-origin: bottom right;
+    }
+
+    .nav-links a:hover:before {
+        background-color: #66ffdb;
+        transform: scaleX(1);
+        transform-origin: bottom left;
+        color: #64ffda;
+    }
+
+    .nav-links a:hover {
+        color: #64ffda;
+        transform: translateY(-2px);
+    }
+
+    .nav-links a.active {
+        color: #64ffda;
+    }
+
+    .box {
+        border: #64ffda 2px solid;
+        display: inline-block;
+        text-align: center;
+        padding: 15px 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        position: relative;
+        margin-left: 1rem;
+    }
+
+    .box a {
+        color: #64ffda;
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        position: relative;
+    }
+
+    .box:hover {
+        transform: translateY(-2px);
+    }
+</style>

@@ -1,0 +1,51 @@
+---
+const { title, description, image, link } = Astro.props
+---
+
+<div class="project-card">
+    <div class="project-card_header">
+        <h2>{title}</h2>
+        <a href={link} target="_blank">
+            <img src="icons/external-link.png" />
+        </a>
+    </div>
+    <p>{description}</p>
+    <img src={image} />
+</div>
+
+<style>
+    .project-card {
+        background-color: rgb(3, 39, 39);
+        padding: 1rem;
+        border-radius: 5%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+        justify-content: center;
+        width: 80%;
+        margin: 1rem auto;
+    }
+
+    .project-card p {
+        color: azure;
+    }
+
+    .project-card a img {
+        width: 20px;
+        height: 20px;
+        margin: 0.5rem;
+    }
+
+    .project-card_header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    h2 {
+        color: azure;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+</style>

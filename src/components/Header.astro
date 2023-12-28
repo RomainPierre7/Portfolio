@@ -1,0 +1,74 @@
+---
+import Navigation from './Navigation.astro'
+import ThemeIcon from './ThemeIcon.astro'
+---
+
+<header>
+    <div class="logo">
+        <a href="/">
+            <img src="icons/terminal.png" alt="Logo" />
+        </a>
+    </div>
+    <div class="bar">
+        <nav>
+            <Navigation />
+        </nav>
+        <div class="nav-icons">
+            <a href="https://github.com/RomainPierre7" target="_blank">
+                <img src="icons/github.png" alt="GitHub" />
+            </a>
+            <a href="https://www.linkedin.com/in/romainpierre7/" target="_blank">
+                <img src="icons/linkedin.png" alt="LinkedIn" />
+            </a>
+            <ThemeIcon />
+        </div>
+    </div>
+</header>
+
+<style>
+    header {
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .logo img {
+        width: 5rem;
+        margin-top: 1rem;
+        margin-left: 1rem;
+    }
+
+    .logo img:hover {
+        opacity: 0.5;
+        transform: scale(1.1);
+    }
+
+    .bar {
+        display: flex;
+        align-items: right;
+    }
+
+    nav {
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .nav-icons {
+        display: flex;
+    }
+
+    .nav-icons img {
+        width: 2rem;
+        margin-left: 1rem;
+        margin-top: 2rem;
+    }
+
+    .nav-icons img:hover {
+        opacity: 0.5;
+        transform: scale(1.1);
+    }
+</style>
