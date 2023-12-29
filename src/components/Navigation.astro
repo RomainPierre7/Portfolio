@@ -167,7 +167,7 @@ import ThemeIcon from './ThemeIcon.astro'
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 2rem;
+            margin-top: 10rem;
         }
 
         .box {
@@ -201,6 +201,7 @@ import ThemeIcon from './ThemeIcon.astro'
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var links = document.querySelectorAll('.nav-links ul li a')
+        console.log(window.location.pathname)
 
         links.forEach(function (link) {
             if (link.getAttribute('href') === window.location.pathname) {
