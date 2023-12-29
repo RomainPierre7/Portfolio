@@ -1,25 +1,52 @@
 ---
-
+import ThemeIcon from './ThemeIcon.astro'
 ---
 
-<div class="nav">
+<div class="navigation">
     <div class="nav-links">
-        <a href="/Portfolio/">Home</a>
-        <a href="/Portfolio/about_me">About me</a>
-        <a href="/Portfolio/projects">Projects</a>
+        <ul>
+            <li><a href="/Portfolio/">Home</a></li>
+            <li><a href="/Portfolio/about_me">About me</a></li>
+            <li><a href="/Portfolio/projects">Projects</a></li>
+        </ul>
     </div>
     <div class="box">
         <a href="/Portfolio/documents/Romain_PIERRE_CV.pdf" target="_blank">
             Resume/CV
         </a>
     </div>
+    <div class="nav-icons">
+        <a href="https://github.com/RomainPierre7" target="_blank">
+            <img src="/Portfolio/icons/github.png" alt="GitHub" />
+        </a>
+        <a href="https://www.linkedin.com/in/romainpierre7/" target="_blank">
+            <img src="/Portfolio/icons/linkedin.png" alt="LinkedIn" />
+        </a>
+        <ThemeIcon />
+    </div>
+</div>
+<div class="menu">
+    <img
+        src="/Portfolio/icons/hamburger-menu.png"
+        alt="menu"
+        width="50px"
+        height="50px"
+        onclick="openNav()"
+    />
 </div>
 
 <style>
-    .nav {
+    .navigation {
         margin-left: 5em;
         display: flex;
         width: auto;
+    }
+
+    .nav-links ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
     }
 
     .nav-links a {
@@ -60,7 +87,7 @@
         transform: translateY(-2px);
     }
 
-    .nav-links a.active {
+    .nav-links ul li a.ongoing {
         color: #64ffda;
     }
 
@@ -90,4 +117,84 @@
     .box:hover {
         transform: translateY(-2px);
     }
+
+    .nav-icons {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-icons img {
+        margin-left: 1rem;
+        width: 2rem;
+        height: 2rem;
+        transition: all 0.3s ease;
+    }
+
+    .nav-icons img:hover {
+        opacity: 0.5;
+        transform: scale(1.1);
+    }
+
+    .menu {
+        display: none;
+    }
+
+    @media screen and (max-width: 1125px) {
+        .navigation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #0a192f;
+            height: 100vh;
+            margin: 0;
+            margin-left: -100%;
+            transition: all 0.5s ease;
+        }
+
+        .nav-links ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .box {
+            margin: 2rem 0;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .navigation.mobile-menu {
+            margin-left: 0;
+        }
+    }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var links = document.querySelectorAll('.nav-links ul li a')
+
+        links.forEach(function (link) {
+            if (link.getAttribute('href') === window.location.pathname) {
+                link.classList.add('ongoing')
+            }
+        })
+    })
+</script>
+
+<script>
+    const hamburger = document.querySelector('.menu')
+    const navigation = document.querySelector('.navigation')
+    hamburger.addEventListener('click', () => {
+        navigation.classList.toggle('mobile-menu')
+    })
+</script>
