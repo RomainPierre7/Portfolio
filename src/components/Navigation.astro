@@ -25,14 +25,11 @@ import ThemeIcon from './ThemeIcon.astro'
         <ThemeIcon />
     </div>
 </div>
-<div class="menu">
-    <img
-        src="/Portfolio/icons/hamburger-menu.png"
-        alt="menu"
-        width="50px"
-        height="50px"
-        onclick="openNav()"
-    />
+<div class="menu-hamburger">
+    <img src="/Portfolio/icons/hamburger-menu.png" alt="menu-hamburger" />
+</div>
+<div class="menu-cross">
+    <img src="/Portfolio/icons/cross-close.png" alt="menu-cross" />
 </div>
 
 <style>
@@ -135,8 +132,19 @@ import ThemeIcon from './ThemeIcon.astro'
         transform: scale(1.1);
     }
 
-    .menu {
+    .menu-hamburger {
         display: none;
+    }
+
+    .menu-cross {
+        display: none;
+    }
+
+    .menu-hamburger img,
+    .menu-cross img {
+        width: 3rem;
+        height: 3rem;
+        transition: all 0.3s ease;
     }
 
     @media screen and (max-width: 1125px) {
@@ -166,7 +174,7 @@ import ThemeIcon from './ThemeIcon.astro'
             margin: 2rem 0;
         }
 
-        .menu {
+        .menu-hamburger {
             display: flex;
             justify-content: flex-end;
             align-items: center;
@@ -175,6 +183,17 @@ import ThemeIcon from './ThemeIcon.astro'
 
         .navigation.mobile-menu {
             margin-left: 0;
+        }
+
+        .menu-hamburger.mobile-menu {
+            display: none;
+        }
+
+        .menu-cross.mobile-menu {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            z-index: 1;
         }
     }
 </style>
@@ -192,9 +211,24 @@ import ThemeIcon from './ThemeIcon.astro'
 </script>
 
 <script>
-    const hamburger = document.querySelector('.menu')
-    const navigation = document.querySelector('.navigation')
-    hamburger.addEventListener('click', () => {
-        navigation.classList.toggle('mobile-menu')
+    document.addEventListener('DOMContentLoaded', () => {
+        const hamburger = document.querySelector('.menu-hamburger')
+        const cross = document.querySelector('.menu-cross')
+        const navigation = document.querySelector('.navigation')
+
+        if (hamburger && cross && navigation) {
+            const toggleMobileMenu = () => {
+                navigation.classList.toggle('mobile-menu')
+                hamburger.classList.toggle('mobile-menu')
+                cross.classList.toggle('mobile-menu')
+            }
+
+            hamburger.addEventListener('click', toggleMobileMenu)
+            cross.addEventListener('click', toggleMobileMenu)
+        } else {
+            console.error(
+                "One of the following elements doesn't exist: hamburger, cross, navigation"
+            )
+        }
     })
 </script>
