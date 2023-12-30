@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+const pageTitle = 'Romain PIERRE | Portfolio'
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <div class="container">
+        <h1>404</h1>
+        <h2>⚠️ Page not found 🚧</h2>
+        <p>Sorry, the page you're looking for doesn't exist.</p>
+    </div>
+</BaseLayout>
+
+<style>
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 70vh;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 7rem;
+    }
+
+    h2 {
+        text-align: center;
+        color: yellow;
+    }
+
+    p {
+        text-align: center;
+        color: white;
+    }
+</style>

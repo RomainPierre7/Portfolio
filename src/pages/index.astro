@@ -5,29 +5,117 @@ const pageTitle = 'Romain PIERRE | Portfolio'
 
 <BaseLayout pageTitle={pageTitle}>
     <div class="container">
-        <h2>⚠️ Site under construction 🚧</h2>
-
-        <p>I'm currently working on my portfolio, please come back later.</p>
+        <div class="profile-pres">
+            Hello, my name is
+            <h1>Romain PIERRE</h1>
+            <p>
+                I'm a french engineer student in computer science. I'm currently
+                in my penultimate year at ENSEIRB-MATMECA in Bordeaux, France.
+            </p>
+            <p>
+                I'm always looking for new challenges and as part of my studies
+                I'm currently seeking for an internship (3 months, starting in July 2024).
+            </p>
+        </div>
+        <div class="profile-pic">
+            <img src="/Portfolio/images/profile-pic.png" alt="Romain PIERRE" />
+        </div>
+    </div>
+    <div class="container">
+        <div class="box">
+            <a href="/Portfolio/about_me/">More about me</a>
+        </div>
+        <div class="box">
+            <a href="/Portfolio/projects/">See my projects</a>
+        </div>
     </div>
 </BaseLayout>
 
 <style>
     .container {
         width: 80%;
-        margin: 0 auto;
+        margin: 3rem auto;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
-    h2 {
-        text-align: center;
-        color: yellow;
+    .profile-pres {
+        text-align: left;
+        line-height: normal;
     }
 
-    p {
-        text-align: center;
+    .profile-pres h1 {
+        font-size: 3em;
+        margin-bottom: 1rem;
+        color: #64ffda;
+        margin-top: 0;
+    }
+
+    .profile-pres p {
+        font-size: 1.2em;
+        line-height: 1.5;
         color: white;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .profile-pic {
+        margin: auto;
+    }
+
+    .profile-pic img {
+        width: 15rem;
+        border-radius: 50%;
+    }
+
+    .profile-pic img:hover {
+        transform: scale(1.1);
+    }
+
+    .box {
+        border: #64ffda 2px solid;
+        display: inline-block;
+        text-align: center;
+        padding: 15px 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        position: relative;
+        margin: 1rem 2rem;
+    }
+
+    .box a {
+        color: #64ffda;
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        position: relative;
+    }
+
+    .box:hover {
+        transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            width: 90%;
+            flex-direction: column;
+        }
+
+        .profile-pres {
+            text-align: center;
+        }
+
+        .profile-pic {
+            margin-top: 2rem;
+        }
+
+        .profile-pic img {
+            width: 200px;
+        }
     }
 </style>
