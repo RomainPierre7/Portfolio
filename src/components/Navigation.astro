@@ -202,10 +202,14 @@ import ThemeIcon from './ThemeIcon.astro'
     document.addEventListener('DOMContentLoaded', function () {
         var links = document.querySelectorAll('.nav-links ul li a')
         console.log(window.location.pathname)
+        links.forEach(function (link) {
+            console.log(link.getAttribute('href'))
+        })
 
         links.forEach(function (link) {
             if (link.getAttribute('href') === window.location.pathname) {
                 link.classList.add('ongoing')
+                console.log("It's a match")
             }
         })
     })
