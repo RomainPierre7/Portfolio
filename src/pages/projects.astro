@@ -6,10 +6,16 @@ const pageTitle = 'Some of my projects'
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <div class="projects">
+    <div class="container">
+        <h2>⚠️ Section under construction 🚧</h2>
+
+        <p>I'm currently working on my portfolio, please come back later.</p>
+    </div>
+
+<!--     <div class="projects">
         <ul>
             {
-                /*                 allProjects.map((post) => (
+                                allProjects.map((post) => (
                     <ul role="list" class="link-card-grid">
                         <ProjectCard
                             title={post.frontmatter.title}
@@ -18,13 +24,27 @@ const pageTitle = 'Some of my projects'
                             link={post.frontmatter.link}
                         />
                     </ul>
-                ))*/
+                ))
             }
         </ul>
-    </div>
+    </div> -->
 </BaseLayout>
 
 <style>
+    .container {
+        width: 80%;
+        margin: auto auto;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: yellow;
+    }
+
     h1 {
         text-align: center;
     }
