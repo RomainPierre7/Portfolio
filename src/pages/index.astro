@@ -1,17 +1,26 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-const pageTitle = "Romain PIERRE | Portfolio"
+const pageTitle = 'Romain PIERRE | Portfolio'
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <h2>⚠️ Site under construction 🚧</h2>
+    <div class="container">
+        <h2>⚠️ Site under construction 🚧</h2>
 
-    <p>
-        I'm currently working on my portfolio, please come back later.
-    </p>
+        <p>I'm currently working on my portfolio, please come back later.</p>
+    </div>
 </BaseLayout>
 
 <style>
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
     h2 {
         text-align: center;
         color: yellow;
