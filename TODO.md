@@ -14,10 +14,9 @@
 
 ## About me
 
-* [ ] Add a picture
 * [ ] Education
 * [ ] Experience
-* [ ] Skills
+* [ ] Skills with dynamic table
 * [ ] Responsive
 
 ## Projects

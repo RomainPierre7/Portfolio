@@ -42,14 +42,15 @@ let i = 0
                 }
             </ul>
         </div>
-<!--         <div class="project-tiles">
+    </div>
+    <div class="container">
+        <div class="project-tiles">
             <ul>
                 {
                     allProjectTiles.map((post) => (
                         <ul role="list">
                             <ProjectTile
                                 title={post.frontmatter.title}
-                                image={post.frontmatter.image}
                                 description={post.frontmatter.description}
                                 link={post.frontmatter.link}
                             />
@@ -57,7 +58,7 @@ let i = 0
                     ))
                 }
             </ul>
-        </div> -->
+        </div>
     </div>
 </BaseLayout>
 

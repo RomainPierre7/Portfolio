@@ -10,10 +10,20 @@ const pageTitle = 'Who am I ?'
             <h2>Experience</h2>
             <ul>
                 <li>
-                    Jun. 2023 : 1-month internship at
+                    <strong>Jun. 2023</strong> : 1-month internship at
                     <a href="https://www.edf.fr/groupe-edf">
                         Électricité de France (EDF)
                     </a>, Rousset, France.
+                    <ul>
+                        <li>
+                            Digitization of the group of plants with the
+                            creation of a PI Vision dashboard.
+                        </li>
+                        <li>
+                            Discovering and supporting teams in the
+                            hydroelectricity business.
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -21,23 +31,24 @@ const pageTitle = 'Who am I ?'
             <h2>Education</h2>
             <ul>
                 <li>
-                    2022 - 2025 : Completing third year of higher education in
-                    Computer Science, 5-year engineering degree expected (2025)
-                    at
+                    <strong>2022 - 2025</strong> : Completing third year of higher
+                    education in Computer Science, 5-year engineering degree expected
+                    (2025) at
                     <a href="https://enseirb-matmeca.bordeaux-inp.fr/fr"
                         >ENSEIRB-MATMECA</a
                     >, Bordeaux, France 🇫🇷.
                 </li>
                 <li>
-                    Jan. - Jun. 2024 : Academic exchange in Computer Science at
+                    <strong>Jan. - Jun. 2024</strong> : Academic exchange in Computer
+                    Science at
                     <a href="https://www.rtu.lv/en">
                         Riga Technical University
                     </a>, Riga, Latvia 🇱🇻.
                 </li>
                 <li>
-                    2020 - 2022 : A 2-year intensive math and physics course in
-                    preparation for the selective entrance examination to French
-                    engineering schools at
+                    <strong>2020 - 2022</strong> : A 2-year intensive math and physics
+                    course in preparation for the selective entrance examination
+                    to French engineering schools at
                     <a
                         href="https://www.site.ac-aix-marseille.fr/lyc-thiers/spip/"
                     >
@@ -45,8 +56,8 @@ const pageTitle = 'Who am I ?'
                     >, Marseille, France 🇫🇷.
                 </li>
                 <li>
-                    2017 - 2020 : Baccalauréat Scientifique (equivalent to High
-                    School Diploma in sciences with distinction) at
+                    <strong>2017 - 2020</strong> : Baccalauréat Scientifique (equivalent
+                    to High School Diploma in sciences with distinction) at
                     <a
                         href="https://www.site.ac-aix-marseille.fr/lyc-honnorat-barcelonnette/spip/?"
                     >
@@ -57,48 +68,124 @@ const pageTitle = 'Who am I ?'
         </div>
         <div class="section">
             <h2>Skills</h2>
+            <ul>
+                <li>
+                    <strong>Programming languages</strong> : Python, C, C++, Java,
+                    JavaScript, PHP, Bash.
+                </li>
+                <li>
+                    <strong>Front-end</strong> : HTML, CSS, Astro.
+                </li>
+                <li>
+                    <strong>Database</strong> : SQL, PostgreSQL.
+                </li>
+                <li>
+                    <strong>Tools</strong> : Linux, Git, VSCode, Android Studio,
+                    Apache, Latex.
+                </li>
+            </ul>
         </div>
         <div class="section">
             <h2>Contact</h2>
-            <ul>
-                <li>
-                    <a href="mailto:romain.pierre434@gmail.com">By mail 📬</a>
-                </li>
-                <li>
-                    <a href="https://www.linkedin.com/in/romainpierre7/">On LinkedIn 📱</a>
-                </li>
+            <div class="box">
+                <a href="mailto:romain.pierre434@gmail.com">By mail 📬</a>
+            </div>
+            <div class="box">
+                <a href="https://www.linkedin.com/in/romainpierre7/">
+                    On LinkedIn 💻
+                </a>
+            </div>
         </div>
     </div>
+
+    <style>
+        .container {
+            width: 80%;
+            margin: auto auto;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .section h2 {
+            text-align: left;
+            text-decoration: underline;
+        }
+
+        .section ul {
+            text-align: left;
+        }
+
+        .section ul li {
+            margin-bottom: 1rem;
+        }
+        .section ul li ul li {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section ul li a {
+            text-decoration: none;
+            color: #64ffda;
+        }
+
+        .section ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .box {
+            border: #64ffda 2px solid;
+            display: inline-block;
+            text-align: center;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: relative;
+            margin: 1rem 2rem;
+        }
+
+        .box a {
+            color: #64ffda;
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .box:hover {
+            transform: translateY(-2px);
+        }
+
+        .table-competences {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table-competences th,
+        .table-competences td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table-competences th {
+            background-color: white;
+            color: #032727;
+        }
+
+        .table-competences img {
+            width: 30px;
+            margin-right: 5px;
+        }
+
+        .table-competences tbody tr:nth-child(even) {
+            background-color: white;
+            color: #032727;
+        }
+    </style>
 </BaseLayout>
-
-<style>
-    .container {
-        width: 80%;
-        margin: auto auto;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-
-    .section h2 {
-        text-align: left;
-        text-decoration: underline;
-    }
-
-    .section ul {
-        text-align: left;
-    }
-
-    .section ul li {
-        margin-bottom: 1rem;
-    }
-
-    .section ul li a {
-        text-decoration: none;
-        color: #64ffda;
-    }
-
-    .section ul li a:hover {
-        text-decoration: underline;
-    }
-</style>
