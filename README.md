@@ -18,3 +18,10 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 🎨 Color Palette
+| Hex Code | Sample |
+| :------- | :----- |
+| `#64ffda` | ![#64ffda](https://via.placeholder.com/15/64ffda/000000?text=+) |
+| `#032727` | ![#032727](https://via.placeholder.com/15/032727/000000?text=+) |
+| `#ffffff` | ![#ffffff](https://via.placeholder.com/15/ffffff/000000?text=+) |

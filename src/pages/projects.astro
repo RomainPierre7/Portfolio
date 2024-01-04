@@ -1,33 +1,43 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import ProjectCard from '../components/ProjectCard.astro'
-//const allProjects = await Astro.glob('./projects/*.md')
+import ProjectCardLeft from '../components/ProjectCardLeft.astro'
+import ProjectCardRight from '../components/ProjectCardRight.astro'
+const allProjects = await Astro.glob('./projects/*.md')
 const pageTitle = 'Some of my projects'
+
+let i = 0
 ---
 
 <BaseLayout pageTitle={pageTitle}>
     <div class="container">
-        <h2>⚠️ Section under construction 🚧</h2>
-
-        <p>I'm currently working on my portfolio, please come back later.</p>
+        <div class="projects">
+            <ul>
+                {
+                    allProjects.map((post) =>
+                        i++ % 2 === 0 ? (
+                            <ul role="list" class="link-card-grid">
+                                <ProjectCardLeft
+                                    title={post.frontmatter.title}
+                                    image={post.frontmatter.image}
+                                    description={post.frontmatter.description}
+                                    link={post.frontmatter.link}
+                                />
+                            </ul>
+                        ) : (
+                            <ul role="list" class="link-card-grid">
+                                <ProjectCardRight
+                                    title={post.frontmatter.title}
+                                    image={post.frontmatter.image}
+                                    description={post.frontmatter.description}
+                                    link={post.frontmatter.link}
+                                />
+                            </ul>
+                        )
+                    )
+                }
+            </ul>
+        </div>
     </div>
-
-<!--     <div class="projects">
-        <ul>
-            {
-                                allProjects.map((post) => (
-                    <ul role="list" class="link-card-grid">
-                        <ProjectCard
-                            title={post.frontmatter.title}
-                            image={post.frontmatter.image}
-                            description={post.frontmatter.description}
-                            link={post.frontmatter.link}
-                        />
-                    </ul>
-                ))
-            }
-        </ul>
-    </div> -->
 </BaseLayout>
 
 <style>
@@ -37,12 +47,6 @@ const pageTitle = 'Some of my projects'
         justify-content: center;
         align-items: center;
         text-align: center;
-    }
-
-    h2 {
-        font-size: 2rem;
-        font-weight: 700;
-        color: yellow;
     }
 
     h1 {

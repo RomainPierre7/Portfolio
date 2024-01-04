@@ -1,0 +1,81 @@
+---
+const { title, description, image, link } = Astro.props
+---
+
+<div class="project-card">
+    <div class="project-card_info">
+        <div class="project-card_header">
+            <h2>{title}</h2>
+            <a href={link} target="_blank">
+                <img src="/Portfolio/icons/external-link.png" />
+            </a>
+        </div>
+        <p>{description}</p>
+    </div>
+    <div class="project-card_image">
+        <img src={image} />
+    </div>
+</div>
+
+<style>
+    .project-card {
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 1rem;
+    }
+
+    .project-card_info {
+        background-color: #64ffda;
+        color: #032727;
+        display: flex;
+        flex-direction: column;
+        width: 30rem;
+        position: absolute;
+        z-index: 1;
+        right: 10%;
+        padding: 1rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.8);
+        border-radius: 0.5rem;
+    }
+
+    .project-card_header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+    }
+
+    .project-card_header h2 {
+        margin: 1rem;
+    }
+
+    .project-card_header img {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin: 2rem;
+    }
+
+    .project-card_image img {
+        width: 32rem;
+        height: 18rem;
+        object-fit: cover;
+        border-radius: 0.5rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.8);
+        z-index: 0;
+    }
+
+    .project-card:hover .project-card_image img {
+        transform: translateX(-5rem);
+    }
+
+    .project-card:hover .project-card_info {
+        transform: translateX(5rem);
+    }
+
+    .project-card_image img,
+    .project-card_info {
+        transition: transform 0.3s ease-in-out;
+    }
+</style>
