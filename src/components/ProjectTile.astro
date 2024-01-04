@@ -1,0 +1,55 @@
+---
+const { title, description, link } = Astro.props
+---
+
+<div class="project-tile">
+    <div class="project-tile_info">
+        <div class="project-tile_header">
+            <h2>{title}</h2>
+            <a href={link} target="_blank">
+                <img src="/Portfolio/icons/external-link.png" />
+            </a>
+        </div>
+        <p>{description}</p>
+    </div>
+</div>
+
+<style>
+    .project-tile {
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 1rem;
+    }
+
+    .project-tile_info {
+        background-color: #64ffda;
+        color: #032727;
+        display: flex;
+        flex-direction: column;
+        width: 30rem;
+        position: absolute;
+        z-index: 1;
+        left: 10%;
+        padding: 1rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.8);
+        border-radius: 0.5rem;
+    }
+
+    .project-tile_header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .project-tile_header h2 {
+        margin: 1rem;
+    }
+
+    .project-tile_header img {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin: 2rem;
+    }
+</style>

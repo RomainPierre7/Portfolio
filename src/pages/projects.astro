@@ -1,21 +1,26 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+
 import ProjectCardLeft from '../components/ProjectCardLeft.astro'
 import ProjectCardRight from '../components/ProjectCardRight.astro'
-const allProjects = await Astro.glob('./projects/*.md')
+
+import ProjectTile from '../components/ProjectTile.astro'
+const allProjectCards = await Astro.glob('./project_cards/*.md')
+const allProjectTiles = await Astro.glob('./project_tiles/*.md')
 const pageTitle = 'Some of my projects'
 
 let i = 0
 ---
 
 <BaseLayout pageTitle={pageTitle}>
+    <h1>Some of my projects</h1>
     <div class="container">
-        <div class="projects">
+        <div class="project-cards">
             <ul>
                 {
-                    allProjects.map((post) =>
+                    allProjectCards.map((post) =>
                         i++ % 2 === 0 ? (
-                            <ul role="list" class="link-card-grid">
+                            <ul>
                                 <ProjectCardLeft
                                     title={post.frontmatter.title}
                                     image={post.frontmatter.image}
@@ -24,7 +29,7 @@ let i = 0
                                 />
                             </ul>
                         ) : (
-                            <ul role="list" class="link-card-grid">
+                            <ul>
                                 <ProjectCardRight
                                     title={post.frontmatter.title}
                                     image={post.frontmatter.image}
@@ -34,6 +39,22 @@ let i = 0
                             </ul>
                         )
                     )
+                }
+            </ul>
+        </div>
+        <div class="project-tiles">
+            <ul>
+                {
+                    allProjectTiles.map((post) => (
+                        <ul role="list">
+                            <ProjectTile
+                                title={post.frontmatter.title}
+                                image={post.frontmatter.image}
+                                description={post.frontmatter.description}
+                                link={post.frontmatter.link}
+                            />
+                        </ul>
+                    ))
                 }
             </ul>
         </div>
@@ -53,24 +74,10 @@ let i = 0
         text-align: center;
     }
 
-    .projects ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .projects {
+    .project-cards {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-    }
-    .link-card-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-gap: 1rem;
-        list-style: none;
-        padding: 0;
-        margin: 0;
     }
 </style>
