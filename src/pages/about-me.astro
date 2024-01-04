@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+const pageTitle = 'Who am I ?'
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <div class="container">
+        <h1>{pageTitle}</h1>
+        <div class="section">
+            <h2>Experience</h2>
+            <ul>
+                <li>
+                    Jun. 2023 : 1-month internship at
+                    <a href="https://www.edf.fr/groupe-edf">
+                        Électricité de France (EDF)
+                    </a>, Rousset, France.
+                </li>
+            </ul>
+        </div>
+        <div class="section">
+            <h2>Education</h2>
+            <ul>
+                <li>
+                    2022 - 2025 : Completing third year of higher education in
+                    Computer Science, 5-year engineering degree expected (2025)
+                    at
+                    <a href="https://enseirb-matmeca.bordeaux-inp.fr/fr"
+                        >ENSEIRB-MATMECA</a
+                    >, Bordeaux, France 🇫🇷.
+                </li>
+                <li>
+                    Jan. - Jun. 2024 : Academic exchange in Computer Science at
+                    <a href="https://www.rtu.lv/en">
+                        Riga Technical University
+                    </a>, Riga, Latvia 🇱🇻.
+                </li>
+                <li>
+                    2020 - 2022 : A 2-year intensive math and physics course in
+                    preparation for the selective entrance examination to French
+                    engineering schools at
+                    <a
+                        href="https://www.site.ac-aix-marseille.fr/lyc-thiers/spip/"
+                    >
+                        Lycée Thiers</a
+                    >, Marseille, France 🇫🇷.
+                </li>
+                <li>
+                    2017 - 2020 : Baccalauréat Scientifique (equivalent to High
+                    School Diploma in sciences with distinction) at
+                    <a
+                        href="https://www.site.ac-aix-marseille.fr/lyc-honnorat-barcelonnette/spip/?"
+                    >
+                        Lycée André Honnorat
+                    </a>, Barcelonnette, France 🇫🇷.
+                </li>
+            </ul>
+        </div>
+        <div class="section">
+            <h2>Skills</h2>
+        </div>
+        <div class="section">
+            <h2>Contact</h2>
+            <ul>
+                <li>
+                    <a href="mailto:romain.pierre434@gmail.com">By mail 📬</a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/romainpierre7/">On LinkedIn 📱</a>
+                </li>
+        </div>
+    </div>
+</BaseLayout>
+
+<style>
+    .container {
+        width: 80%;
+        margin: auto auto;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .section h2 {
+        text-align: left;
+        text-decoration: underline;
+    }
+
+    .section ul {
+        text-align: left;
+    }
+
+    .section ul li {
+        margin-bottom: 1rem;
+    }
+
+    .section ul li a {
+        text-decoration: none;
+        color: #64ffda;
+    }
+
+    .section ul li a:hover {
+        text-decoration: underline;
+    }
+</style>

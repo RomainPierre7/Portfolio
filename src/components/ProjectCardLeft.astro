@@ -2,20 +2,20 @@
 const { title, description, image, link } = Astro.props
 ---
 
-<div class="project-card">
-    <div class="project-card_info">
-        <div class="project-card_header">
-            <h2>{title}</h2>
-            <a href={link} target="_blank">
+<a href={link} target="_blank">
+    <div class="project-card">
+        <div class="project-card_info">
+            <div class="project-card_header">
+                <h2>{title}</h2>
                 <img src="/Portfolio/icons/external-link.png" />
-            </a>
+            </div>
+            <p>{description}</p>
         </div>
-        <p>{description}</p>
+        <div class="project-card_image">
+            <img src={image} />
+        </div>
     </div>
-    <div class="project-card_image">
-        <img src={image} />
-    </div>
-</div>
+</a>
 
 <style>
     .project-card {
@@ -31,10 +31,10 @@ const { title, description, image, link } = Astro.props
         color: #032727;
         display: flex;
         flex-direction: column;
-        width: 30rem;
+        width: 35%;
         position: absolute;
         z-index: 1;
-        left: 10%;
+        right: 55%;
         padding: 1rem;
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.8);
         border-radius: 0.5rem;
@@ -66,15 +66,54 @@ const { title, description, image, link } = Astro.props
     }
 
     .project-card:hover .project-card_image img {
-        transform: translateX(5rem);
+        transform: translateX(15%);
     }
 
     .project-card:hover .project-card_info {
-        transform: translateX(-5rem);
+        transform: translateX(-15%);
     }
 
     .project-card_image img,
     .project-card_info {
         transition: transform 0.3s ease-in-out;
+    }
+
+    @media (max-width: 1125px) {
+        .project-card_info {
+            width: 20rem;
+            height: 11.25rem;
+            right: 50%;
+            transform: translateX(50%);
+            background-color: rgb(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 0%;
+            box-shadow: none;
+        }
+
+        .project-card_image {
+            width: 20rem;
+            height: 11.25rem;
+            right: 50%;
+            transform: translateX(50%);
+            border-radius: 0%;
+            box-shadow: none;
+            background-color: rosybrown;
+        }
+
+        .project-card_image img {
+            display: none;
+        }
+    }
+
+    @media (min-width: 2000px) {
+        .project-card_info {
+            width: 40rem;
+            font-size: 1.5rem;
+        }
+
+        .project-card_image img {
+            width: 40rem;
+            height: 22.5rem;
+        }
     }
 </style>
