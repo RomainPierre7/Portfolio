@@ -29,7 +29,7 @@ const { title, description, image, link } = Astro.props
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin: 1rem;
+        margin: 2rem;
     }
 
     .project-card_info {
@@ -86,24 +86,7 @@ const { title, description, image, link } = Astro.props
 
     @media (max-width: 1125px) {
         .project-card_info {
-            width: 20rem;
-            height: 11.25rem;
-            right: 50%;
-            transform: translateX(50%);
-            background-color: rgb(0, 0, 0, 0.8);
-            color: white;
-            border-radius: 0%;
-            box-shadow: none;
-        }
-
-        .project-card_image {
-            width: 20rem;
-            height: 11.25rem;
-            right: 50%;
-            transform: translateX(50%);
-            border-radius: 0%;
-            box-shadow: none;
-            background-color: rosybrown;
+            display: none;
         }
 
         .project-card_image img {

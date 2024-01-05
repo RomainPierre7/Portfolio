@@ -20,23 +20,19 @@ let i = 0
                 {
                     allProjectCards.map((post) =>
                         i++ % 2 === 0 ? (
-                            <ul>
-                                <ProjectCardLeft
-                                    title={post.frontmatter.title}
-                                    image={post.frontmatter.image}
-                                    description={post.frontmatter.description}
-                                    link={post.frontmatter.link}
-                                />
-                            </ul>
+                            <ProjectCardLeft
+                                title={post.frontmatter.title}
+                                image={post.frontmatter.image}
+                                description={post.frontmatter.description}
+                                link={post.frontmatter.link}
+                            />
                         ) : (
-                            <ul>
-                                <ProjectCardRight
-                                    title={post.frontmatter.title}
-                                    image={post.frontmatter.image}
-                                    description={post.frontmatter.description}
-                                    link={post.frontmatter.link}
-                                />
-                            </ul>
+                            <ProjectCardRight
+                                title={post.frontmatter.title}
+                                image={post.frontmatter.image}
+                                description={post.frontmatter.description}
+                                link={post.frontmatter.link}
+                            />
                         )
                     )
                 }
@@ -44,20 +40,21 @@ let i = 0
         </div>
     </div>
     <div class="container">
-        <div class="project-tiles">
-            <ul>
-                {
-                    allProjectTiles.map((post) => (
-                        <ul role="list">
-                            <ProjectTile
-                                title={post.frontmatter.title}
-                                description={post.frontmatter.description}
-                                link={post.frontmatter.link}
-                            />
-                        </ul>
-                    ))
-                }
-            </ul>
+        <ul role="list" class="project-tiles">
+            {
+                allProjectTiles.map((post) => (
+                    <ProjectTile
+                        title={post.frontmatter.title}
+                        description={post.frontmatter.description}
+                        link={post.frontmatter.link}
+                    />
+                ))
+            }
+        </ul>
+        <div class="box">
+            <a href="https://github.com/RomainPierre7" target="_blanck">
+                More projects on my GitHub profile
+            </a>
         </div>
     </div>
 </BaseLayout>
@@ -69,6 +66,7 @@ let i = 0
         justify-content: center;
         align-items: center;
         text-align: center;
+        margin-top: 1rem;
     }
 
     h1 {
@@ -82,9 +80,45 @@ let i = 0
         justify-content: center;
     }
 
-    .project-cards ul {
+    .project-cards {
         list-style: none;
         margin: 0, auto;
         padding: 0;
+    }
+
+    .project-tiles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-gap: 1rem;
+        list-style: none;
+        margin: 10rem, auto;
+        padding: 0;
+    }
+
+    .box {
+        border: #64ffda 2px solid;
+        display: inline-block;
+        text-align: center;
+        padding: 15px 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        position: relative;
+        margin: 2rem 2rem;
+    }
+
+    .box a {
+        color: #64ffda;
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        position: relative;
+    }
+
+    .box:hover {
+        transform: translateY(-2px);
     }
 </style>

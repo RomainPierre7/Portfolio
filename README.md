@@ -24,5 +24,5 @@ All commands are run from the root of the project, from a terminal:
 | :------- | :----- |
 | `#ffffff` | ![#ffffff](https://via.placeholder.com/15/ffffff/000000?text=+) |
 | `#64ffda` | ![#64ffda](https://via.placeholder.com/15/64ffda/000000?text=+) |
-| `#032727` | ![#032727](https://via.placeholder.com/15/032727/000000?text=+) |
+| `#0a192f` | ![#0a192f](https://via.placeholder.com/15/0a192f/000000?text=+) |
 | `#000000` | ![#000000](https://via.placeholder.com/15/000000/000000?text=+) |

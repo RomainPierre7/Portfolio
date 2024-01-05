@@ -84,6 +84,16 @@ const { title, description, image, link } = Astro.props
         transition: transform 0.3s ease-in-out;
     }
 
+    @media (max-width: 1125px) {
+        .project-card_info {
+            display: none;
+        }
+
+        .project-card_image img {
+            display: none;
+        }
+    }
+
     @media (min-width: 2000px) {
         .project-card_info {
             width: 40rem;
