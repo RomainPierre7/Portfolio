@@ -13,7 +13,14 @@ const { title, description, image, link } = Astro.props
         <div class="project-card_info">
             <div class="project-card_header">
                 <h2>{title}</h2>
-                <img src="/Portfolio/icons/external-link.png" />
+                <img
+                    src="/Portfolio/icons/external-link-white.png"
+                    class="white"
+                />
+                <img
+                    src="/Portfolio/icons/external-link-black.png"
+                    class="dark"
+                />
             </div>
             <p>{description}</p>
         </div>
@@ -29,7 +36,7 @@ const { title, description, image, link } = Astro.props
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin: 1rem;
+        margin: 2rem;
     }
 
     .project-card_info {
@@ -41,9 +48,9 @@ const { title, description, image, link } = Astro.props
         position: absolute;
         z-index: 1;
         left: 55%;
-        padding: 1rem;
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.8);
         border-radius: 0.5rem;
+        padding: 0 0.5rem;
     }
 
     .project-card_header {
@@ -60,6 +67,11 @@ const { title, description, image, link } = Astro.props
         width: 1.5rem;
         height: 1.5rem;
         margin: 2rem;
+    }
+
+    .project-card_image {
+        width: 32rem;
+        height: 18rem;
     }
 
     .project-card_image img {
@@ -84,13 +96,68 @@ const { title, description, image, link } = Astro.props
         transition: transform 0.3s ease-in-out;
     }
 
+    .white {
+        display: none;
+    }
+
     @media (max-width: 1125px) {
         .project-card_info {
+            left: 50%;
+            transform: translateX(-50%);
+            width: 32rem;
+            height: 18rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        .project-card_image {
+            width: 32rem;
+            height: 18rem;
+        }
+
+        .dark {
             display: none;
         }
 
+        .white {
+            display: block;
+        }
+    }
+
+    @media (max-width: 630px) {
+        .project-card_info {
+            width: 20rem;
+            height: 11.25rem;
+            font-size: 1rem;
+        }
+
+        .project-card_image {
+            width: 20rem;
+            height: 11.25rem;
+        }
+
         .project-card_image img {
-            display: none;
+            width: 20rem;
+            height: 11.25rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .project-card_info {
+            width: 18rem;
+            height: 10.125rem;
+            font-size: 0.7rem;
+        }
+
+        .project-card_image {
+            width: 18rem;
+            height: 10.125rem;
+        }
+
+        .project-card_image img {
+            width: 18rem;
+            height: 10.125rem;
         }
     }
 
