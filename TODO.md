@@ -5,6 +5,7 @@
 * [ ] Add a dark/light mode
 * [ ] Make the navbar unfold when the user scrolls up
 * [ ] Propose as an Astro template
+* [ ] Menu on mobile block scrolling
 
 ## Home
 
@@ -24,7 +25,7 @@
 * [x] Tiles
 * [x] TIles responsive
 * [x] Cards
-* [ ] Cards responsive
+* [x] Cards responsive
 * [ ] GIF for cards
 * [ ] Print tags
 * [ ] Search bar / filter

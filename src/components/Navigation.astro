@@ -162,7 +162,7 @@ import ThemeIcon from './ThemeIcon.astro'
             margin: 0;
             margin-left: -100%;
             transition: all 0.5s ease;
-            z-index: 1;
+            z-index: 2;
         }
 
         .nav-links ul {
@@ -180,12 +180,12 @@ import ThemeIcon from './ThemeIcon.astro'
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            z-index: 1;
+            z-index: 2;
         }
 
         .navigation.mobile-menu {
             margin-left: 0;
-overflow-y:none;
+            overflow-y: none;
         }
 
         .menu-hamburger.mobile-menu {
@@ -196,7 +196,7 @@ overflow-y:none;
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            z-index: 1;
+            z-index: 2;
         }
     }
 </style>
@@ -224,6 +224,11 @@ overflow-y:none;
                 navigation.classList.toggle('mobile-menu')
                 hamburger.classList.toggle('mobile-menu')
                 cross.classList.toggle('mobile-menu')
+                if (document.body.style.overflowY === 'hidden') {
+                    document.body.style.overflowY = 'scroll'
+                } else {
+                    document.body.style.overflowY = 'hidden'
+                }
             }
 
             hamburger.addEventListener('click', toggleMobileMenu)
