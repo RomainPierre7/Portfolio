@@ -23,11 +23,13 @@ const pageTitle = 'Romain PIERRE | Portfolio'
         </div>
     </div>
     <div class="container">
-        <div class="box">
-            <a href="/Portfolio/about-me/">More about me</a>
-        </div>
-        <div class="box">
-            <a href="/Portfolio/projects/">See my projects</a>
+        <div class="boxes">
+            <a href="/Portfolio/about-me/">
+                <div class="box">More about me</div>
+            </a>
+            <a href="/Portfolio/projects/">
+                <div class="box">See my projects</div>
+            </a>
         </div>
     </div>
 </BaseLayout>
@@ -86,7 +88,7 @@ const pageTitle = 'Romain PIERRE | Portfolio'
         margin: 1rem 2rem;
     }
 
-    .box a {
+    .boxes a {
         color: #64ffda;
         display: inline-block;
         text-align: center;
