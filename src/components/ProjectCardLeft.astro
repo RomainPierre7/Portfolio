@@ -66,7 +66,11 @@ const { title, description, image, link } = Astro.props
     .project-card_header img {
         width: 1.5rem;
         height: 1.5rem;
-        margin: 2rem;
+        margin: 0 2rem;
+    }
+
+    .project-card_info p {
+        margin: 1rem;
     }
 
     .project-card_image {
@@ -101,6 +105,14 @@ const { title, description, image, link } = Astro.props
     }
 
     @media (max-width: 1125px) {
+        .project-card:hover .project-card_image img {
+            transform: none;
+        }
+
+        .project-card:hover .project-card_info {
+            transform: none;
+        }
+
         .project-card_info {
             right: 50%;
             transform: translateX(50%);
@@ -130,6 +142,10 @@ const { title, description, image, link } = Astro.props
             width: 20rem;
             height: 11.25rem;
             font-size: 1rem;
+        }
+
+        .project-card_info p {
+            margin: 0rem;
         }
 
         .project-card_image {
