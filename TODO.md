@@ -5,7 +5,7 @@
 * [ ] Add a dark/light mode
 * [ ] Make the navbar unfold when the user scrolls up
 * [ ] Propose as an Astro template
-* [ ] Menu on mobile block scrolling
+* [x] Menu on mobile block scrolling
 
 ## Home
 

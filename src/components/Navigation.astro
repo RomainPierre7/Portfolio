@@ -226,8 +226,10 @@ import ThemeIcon from './ThemeIcon.astro'
                 cross.classList.toggle('mobile-menu')
                 if (document.body.style.overflowY === 'hidden') {
                     document.body.style.overflowY = 'scroll'
+                    window.scrollTo(0, 0)
                 } else {
                     document.body.style.overflowY = 'hidden'
+                    window.scrollTo(0, 0)
                 }
             }
 
