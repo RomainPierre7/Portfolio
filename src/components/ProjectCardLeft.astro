@@ -87,14 +87,6 @@ const { title, description, image, link } = Astro.props
         z-index: 0;
     }
 
-    .project-card:hover .project-card_image img {
-        transform: translateX(15%);
-    }
-
-    .project-card:hover .project-card_info {
-        transform: translateX(-15%);
-    }
-
     .project-card_image img,
     .project-card_info {
         transition: transform 0.3s ease-in-out;
@@ -104,12 +96,17 @@ const { title, description, image, link } = Astro.props
         display: none;
     }
 
-    @media screen and (max-width: 1125px) {
-        .project-card:hover .project-card_image img,
-        .project-card:hover .project-card_info {
-            transform: none;
+    @media screen and (min-width: 1126px) {
+        .project-card:hover .project-card_image img {
+            transform: translateX(15%);
         }
 
+        .project-card:hover .project-card_info {
+            transform: translateX(-15%);
+        }
+    }
+
+    @media screen and (max-width: 1125px) {
         .project-card_info {
             right: 50%;
             transform: translateX(50%);
@@ -184,7 +181,7 @@ const { title, description, image, link } = Astro.props
             width: 40rem;
             height: 22.5rem;
         }
-        
+
         .project-card {
             margin-bottom: 7rem;
         }
