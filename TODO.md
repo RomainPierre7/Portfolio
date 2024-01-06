@@ -17,6 +17,7 @@
 
 * [x] Education
 * [x] Experience
+* [ ] Company logo for experience
 * [ ] Skills with dynamic table
 * [ ] Responsive
 
