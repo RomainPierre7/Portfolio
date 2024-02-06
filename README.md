@@ -1,6 +1,6 @@
 # 🚀 Portfolio
 
-**Personal portfolio** made within the *Astro* framework and hosted on *GitHub Pages* at this [link](https://romainpierre7.github.io/Portfolio/).
+**Personal portfolio** made from scratch within the *Astro* framework and hosted on *GitHub Pages* at this [link](https://romainpierre7.github.io/Portfolio/).
 
 > No template used, everything is made from scratch.
 
