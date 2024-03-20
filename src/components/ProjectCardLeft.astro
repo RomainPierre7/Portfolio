@@ -13,14 +13,8 @@ const { title, description, image, link } = Astro.props
         <div class="project-card_info">
             <div class="project-card_header">
                 <h2>{title}</h2>
-                <img
-                    src="/Portfolio/icons/external-link-white.png"
-                    class="white"
-                />
-                <img
-                    src="/Portfolio/icons/external-link-black.png"
-                    class="dark"
-                />
+                <img src="/Portfolio/icons/external-link-white.png" class="white" />
+                <img src="/Portfolio/icons/external-link-black.png" class="dark" />
             </div>
             <p>{description}</p>
         </div>
@@ -70,7 +64,8 @@ const { title, description, image, link } = Astro.props
     }
 
     .project-card_info p {
-        margin: 1rem;
+        margin-top: 0;
+        margin-bottom: 1rem;
     }
 
     .project-card_image {
