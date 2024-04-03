@@ -10,11 +10,9 @@ import ThemeIcon from './ThemeIcon.astro'
             <li><a href="/Portfolio/projects/">Projects</a></li>
         </ul>
     </div>
-    <div class="box">
-        <a href="/Portfolio/documents/Romain_PIERRE_CV.pdf" target="_blank">
-            Resume/CV
-        </a>
-    </div>
+    <a href="/Portfolio/documents/Romain_PIERRE_CV.pdf" target="_blank">
+        <div class="box">Resume/CV</div>
+    </a>
     <div class="nav-icons">
         <a href="https://github.com/RomainPierre7" target="_blank">
             <img src="/Portfolio/icons/github.png" alt="GitHub" />
@@ -101,7 +99,7 @@ import ThemeIcon from './ThemeIcon.astro'
         margin-right: 1rem;
     }
 
-    .box a {
+    a .box {
         color: #64ffda;
         display: inline-block;
         text-align: center;
@@ -122,7 +120,7 @@ import ThemeIcon from './ThemeIcon.astro'
     }
 
     .nav-icons img {
-        margin-left: 1rem;
+        margin: auto 0.5rem;
         width: 2rem;
         height: 2rem;
         transition: all 0.3s ease;
