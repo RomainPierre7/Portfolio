@@ -30,6 +30,48 @@ import ThemeIcon from './ThemeIcon.astro'
     <img src="/Portfolio/icons/cross-close.png" alt="menu-cross" />
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var links = document.querySelectorAll('.nav-links ul li a')
+
+        links.forEach(function (link) {
+            if (link.getAttribute('href') === window.location.pathname) {
+                link.classList.add('ongoing')
+            }
+        })
+    })
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const hamburger = document.querySelector('.menu-hamburger')
+        const cross = document.querySelector('.menu-cross')
+        const navigation = document.querySelector('.navigation')
+
+        if (hamburger && cross && navigation) {
+            const toggleMobileMenu = () => {
+                navigation.classList.toggle('mobile-menu')
+                hamburger.classList.toggle('mobile-menu')
+                cross.classList.toggle('mobile-menu')
+                if (document.body.style.overflowY === 'hidden') {
+                    document.body.style.overflowY = 'scroll'
+                    window.scrollTo(0, 0)
+                } else {
+                    document.body.style.overflowY = 'hidden'
+                    window.scrollTo(0, 0)
+                }
+            }
+
+            hamburger.addEventListener('click', toggleMobileMenu)
+            cross.addEventListener('click', toggleMobileMenu)
+        } else {
+            console.error(
+                "One of the following elements doesn't exist: hamburger, cross, navigation"
+            )
+        }
+    })
+</script>
+
 <style>
     .navigation {
         margin-left: 5em;
@@ -206,45 +248,3 @@ import ThemeIcon from './ThemeIcon.astro'
         }
     }
 </style>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var links = document.querySelectorAll('.nav-links ul li a')
-
-        links.forEach(function (link) {
-            if (link.getAttribute('href') === window.location.pathname) {
-                link.classList.add('ongoing')
-            }
-        })
-    })
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const hamburger = document.querySelector('.menu-hamburger')
-        const cross = document.querySelector('.menu-cross')
-        const navigation = document.querySelector('.navigation')
-
-        if (hamburger && cross && navigation) {
-            const toggleMobileMenu = () => {
-                navigation.classList.toggle('mobile-menu')
-                hamburger.classList.toggle('mobile-menu')
-                cross.classList.toggle('mobile-menu')
-                if (document.body.style.overflowY === 'hidden') {
-                    document.body.style.overflowY = 'scroll'
-                    window.scrollTo(0, 0)
-                } else {
-                    document.body.style.overflowY = 'hidden'
-                    window.scrollTo(0, 0)
-                }
-            }
-
-            hamburger.addEventListener('click', toggleMobileMenu)
-            cross.addEventListener('click', toggleMobileMenu)
-        } else {
-            console.error(
-                "One of the following elements doesn't exist: hamburger, cross, navigation"
-            )
-        }
-    })
-</script>
