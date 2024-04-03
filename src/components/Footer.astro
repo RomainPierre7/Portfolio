@@ -7,6 +7,24 @@ const year = new Date().getFullYear()
     <p>Made from scratch</p>
 </footer>
 
+<script>
+    window.onload = function () {
+        const footer = document.querySelector('footer')
+        if (!footer) return
+        footer.style.display = 'none'
+        setTimeout(function () {
+            const bodyHeight = document.body.clientHeight
+            const windowHeight = window.innerHeight
+            if (bodyHeight < windowHeight) {
+                footer.style.position = 'absolute'
+                footer.style.bottom = '0'
+                footer.style.width = '100%'
+            }
+            footer.style.display = 'block'
+        }, 100) // Let the page load first
+    }
+</script>
+
 <style>
     footer {
         background-color: #64ffda;
