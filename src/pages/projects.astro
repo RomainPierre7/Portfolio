@@ -131,4 +131,10 @@ let i = 0
     .spacer {
         height: 2rem;
     }
+
+    @media (max-width: 450px) {
+        .project-tiles {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+    }
 </style>
