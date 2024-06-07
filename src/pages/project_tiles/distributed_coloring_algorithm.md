@@ -1,6 +1,6 @@
 ---
-title: 'Distributed coloring algorithm'
-description: 'Distributed coloring algorithm with jBotSim in java.'
-link: 'https://github.com/RomainPierre7/distributed-coloring-algorithm'
-tags: ["Distributed Systems", "Java", "Coloring"]
+title: 'ML Playground'
+description: 'This project is an implementation of various machine learning algorithms (regression, classification, clustering, etc.).'
+link: 'https://github.com/RomainPierre7/ML-playground'
+tags: ["Python", "Machine Learning", "Algorithms"]
 ---
