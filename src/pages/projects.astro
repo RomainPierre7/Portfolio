@@ -9,6 +9,10 @@ const allProjectCards = await Astro.glob('./project_cards/*.md')
 const allProjectTiles = await Astro.glob('./project_tiles/*.md')
 const pageTitle = 'Some of my projects'
 
+const numberOfProjects = await fetch('https://api.github.com/users/romainpierre7').then(
+    (response) => response.json().then((data) => data.public_repos)
+)
+
 let i = 0
 ---
 
@@ -53,7 +57,9 @@ let i = 0
         </ul>
         <div class="boxes">
             <a href="https://github.com/RomainPierre7" target="_blanck">
-                <div class="box">More projects on my GitHub profile</div>
+                <div class="box">
+                    More projects on my GitHub profile ({JSON.stringify(numberOfProjects)} projects)
+                </div>
             </a>
         </div>
     </div>

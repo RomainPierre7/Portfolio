@@ -1,10 +1,16 @@
 ---
 const year = new Date().getFullYear()
+
+const numberOfStars = await fetch(
+    'https://api.github-star-counter.workers.dev/user/romainpierre7'
+).then((response) => response.json().then((data) => data.stars))
 ---
 
 <footer>
     <p>© {year} All rights reserved</p>
-    <p>Made from scratch</p>
+    <p>
+        Made from scratch | {JSON.stringify(numberOfStars)} ⭐
+    </p>
 </footer>
 
 <style>
