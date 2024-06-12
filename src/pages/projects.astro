@@ -5,13 +5,9 @@ import ProjectCardLeft from '../components/ProjectCardLeft.astro'
 import ProjectCardRight from '../components/ProjectCardRight.astro'
 
 import ProjectTile from '../components/ProjectTile.astro'
-const allProjectCards = await Astro.glob('./project_cards/*.md')
-const allProjectTiles = await Astro.glob('./project_tiles/*.md')
+const allProjectCards = await Astro.glob('./project_cards/*.md*')
+const allProjectTiles = await Astro.glob('./project_tiles/*.md*')
 const pageTitle = 'Some of my projects'
-
-const numberOfProjects = await fetch('https://api.github.com/users/romainpierre7').then(
-    (response) => response.json().then((data) => data.public_repos)
-)
 
 let i = 0
 ---
@@ -58,13 +54,73 @@ let i = 0
         <div class="boxes">
             <a href="https://github.com/RomainPierre7" target="_blanck">
                 <div class="box">
-                    More projects on my GitHub profile ({JSON.stringify(numberOfProjects)} projects)
+                    More projects on my GitHub profile <span id="project-count"></span>
                 </div>
             </a>
         </div>
     </div>
     <div class="spacer"></div>
 </BaseLayout>
+
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const projectCountElement = document.getElementById('project-count')
+
+        if (projectCountElement) {
+            try {
+                const response = await fetch('https://api.github.com/users/romainpierre7')
+                const data = await response.json()
+                const numberOfProjects = data.public_repos
+                projectCountElement.textContent = `(${numberOfProjects} projects)`
+            } catch (error) {
+                console.log('Public projects: Error fetching projects')
+            }
+        }
+    })
+</script>
+
+<script>
+    interface Asset {
+        download_count: number
+    }
+
+    interface Release {
+        assets: Asset[]
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        const releases: Release[] = await fetch(
+            'https://api.github.com/repos/romainpierre7/jellyfin-plugin-telegramnotifier/releases'
+        ).then((response) => response.json())
+
+        const downloadCounts = releases
+            .map((release) => release.assets.map((asset) => asset.download_count))
+            .flat()
+
+        const maxDownloadCount = Math.max(...downloadCounts)
+
+        const projectCardInfoElements = document.querySelectorAll('.project-card_info')
+
+        let targetElement = null
+
+        projectCardInfoElements.forEach((proj) => {
+            const header = proj.querySelector('.project-card_header')
+            if (header) {
+                const title = header.querySelector('h2')
+                if (title && title.textContent) {
+                    if (title.textContent.trim() === 'Telegram Notifier') {
+                        title.textContent = title.textContent + ` (${maxDownloadCount} users)`
+                        /* targetElement = proj.querySelector('p')
+                        if (targetElement) {
+                            targetElement.textContent =
+                                targetElement.textContent + ` Downloaded ${maxDownloadCount} times`
+                        } */
+                    }
+                }
+            }
+        })
+    })
+</script>
 
 <style>
     .container {

@@ -1,17 +1,32 @@
 ---
 const year = new Date().getFullYear()
-
-const numberOfStars = await fetch(
-    'https://api.github-star-counter.workers.dev/user/romainpierre7'
-).then((response) => response.json().then((data) => data.stars))
 ---
 
 <footer>
     <p>© {year} All rights reserved</p>
-    <p>
-        Made from scratch | {JSON.stringify(numberOfStars)} ⭐
-    </p>
+    <p>Made from scratch | <span id="star-count">Loading... ⭐</span></p>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const yearElement = document.querySelector('footer p:first-child')
+        const starCountElement = document.getElementById('star-count')
+
+        const year = new Date().getFullYear()
+        if (yearElement) yearElement.textContent = `© ${year} All rights reserved`
+
+        try {
+            const response = await fetch(
+                'https://api.github-star-counter.workers.dev/user/romainpierre7'
+            )
+            const data = await response.json()
+            const numberOfStars = data.stars
+            if (starCountElement) starCountElement.textContent = `${numberOfStars} ⭐`
+        } catch (error) {
+            if (starCountElement) starCountElement.textContent = 'Error fetching stars ⭐'
+        }
+    })
+</script>
 
 <style>
     footer {
