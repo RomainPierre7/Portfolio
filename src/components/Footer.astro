@@ -4,7 +4,13 @@ const year = new Date().getFullYear()
 
 <footer>
     <p>© {year} All rights reserved</p>
-    <p>Made from scratch | <span id="star-count">Loading... ⭐</span></p>
+    <p>
+        <a href="https://github.com/RomainPierre7/portfolio" target="_blank"> Made from scratch </a>
+        |
+        <a id="star-count" href="https://github.com/RomainPierre7" target="_blank">
+            Loading... ⭐
+        </a>
+    </p>
 </footer>
 
 <script>
@@ -39,5 +45,10 @@ const year = new Date().getFullYear()
 
     footer p {
         margin: 0;
+    }
+
+    footer a {
+        text-decoration: none;
+        color: inherit;
     }
 </style>
