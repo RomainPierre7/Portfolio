@@ -4,4 +4,5 @@ description: 'Personal work in the context of the entrance examination to the Fr
 image: '/Portfolio/gifs/fire_spreading.gif'
 link: 'https://github.com/RomainPierre7/fire-spreading'
 tags: ["School project", "Python", "Simulation", "Cellular automaton", "Percolation"]
+order: 80
 ---

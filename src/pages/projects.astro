@@ -5,8 +5,40 @@ import ProjectCardLeft from '../components/ProjectCardLeft.astro'
 import ProjectCardRight from '../components/ProjectCardRight.astro'
 
 import ProjectTile from '../components/ProjectTile.astro'
+
+type FrontmatterCard = {
+    title: string
+    description: string
+    image: string
+    link: string
+    order: number
+}
+
+type ProjectCard = {
+    frontmatter: FrontmatterCard
+}
+
+type FrontmatterTile = {
+    title: string
+    description: string
+    link: string
+    order: number
+}
+
+type ProjectTile = {
+    frontmatter: FrontmatterTile
+}
+
+function sortByOrder<T extends { frontmatter: { order?: number } }>(a: T, b: T): number {
+    const orderA = a.frontmatter.order ?? Infinity
+    const orderB = b.frontmatter.order ?? Infinity
+    return orderA - orderB
+}
+
 const allProjectCards = await Astro.glob('./project_cards/*.md*')
+allProjectCards.sort(sortByOrder)
 const allProjectTiles = await Astro.glob('./project_tiles/*.md*')
+allProjectTiles.sort(sortByOrder)
 const pageTitle = 'Some of my projects'
 
 let i = 0
@@ -18,7 +50,7 @@ let i = 0
         <div class="project-cards">
             <ul>
                 {
-                    allProjectCards.map((post) =>
+                    allProjectCards.map((post: ProjectCard) =>
                         i++ % 2 === 0 ? (
                             <ProjectCardLeft
                                 title={post.frontmatter.title}
@@ -42,7 +74,7 @@ let i = 0
     <div class="container">
         <ul role="list" class="project-tiles">
             {
-                allProjectTiles.map((post) => (
+                allProjectTiles.map((post: ProjectTile) => (
                     <ProjectTile
                         title={post.frontmatter.title}
                         description={post.frontmatter.description}

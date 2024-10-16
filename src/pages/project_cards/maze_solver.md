@@ -4,4 +4,5 @@ description: 'This project in C++ consists to create a maze and then find the sh
 image: '/Portfolio/gifs/maze_solver.gif'
 link: 'https://github.com/RomainPierre7/maze-solver'
 tags: ["C++", "SDL2", "Maze", "Pathfinding"]
+order: 40
 ---
