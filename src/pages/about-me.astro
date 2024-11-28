@@ -1,6 +1,42 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 const pageTitle = 'Who am I ?'
+
+import ExperienceCardLeft from '../components/ExperienceCardLeft.astro'
+import ExperienceCardRight from '../components/ExperienceCardRight.astro'
+
+import EducationCardLeft from '../components/ExperienceCardLeft.astro'
+import EducationCardRight from '../components/ExperienceCardRight.astro'
+
+type FrontmatterCard = {
+    title: string
+    description: string
+    image: string
+    link: string
+    order: number
+}
+
+type ExperienceCard = {
+    frontmatter: FrontmatterCard
+}
+
+type EducationCard = {
+    frontmatter: FrontmatterCard
+}
+
+function sortByOrder<T extends { frontmatter: { order?: number } }>(a: T, b: T): number {
+    const orderA = a.frontmatter.order ?? Infinity
+    const orderB = b.frontmatter.order ?? Infinity
+    return orderA - orderB
+}
+
+const allExperienceCards = await Astro.glob('./experience_cards/*.md*')
+allExperienceCards.sort(sortByOrder)
+
+const allEducationCards = await Astro.glob('./education_cards/*.md*')
+allEducationCards.sort(sortByOrder)
+
+let i = 0
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -8,169 +44,352 @@ const pageTitle = 'Who am I ?'
         <h1>{pageTitle}</h1>
         <div class="section">
             <h2>Experience</h2>
-            <ul>
-                <li>
-                    <strong>Jul. 2024 - Sep. 2024</strong> : 3-month internship at
-                    <a href="https://www.enedis.fr/"> Enedis </a>, Toulouse, France.
-                    <ul>
-                        <li>Process acceleration and automation.</li>
-                        <li>
-                            Creation of various IT solutions in the form of desktop applications.
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Jun. 2023</strong> : 1-month internship at
-                    <a href="https://www.edf.fr/groupe-edf"> Électricité de France (EDF) </a>,
-                    Rousset, France.
-                    <ul>
-                        <li>
-                            Digitization of the group of plants with the creation of a PI Vision
-                            dashboard.
-                        </li>
-                        <li>Discovering and supporting teams in the hydroelectricity business.</li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div class="section">
-            <h2>Education</h2>
-            <ul>
-                <li>
-                    <strong>2022 - 2025</strong> : Completing third year of higher education in Computer
-                    Science, 5-year engineering degree expected (2025) at
-                    <a href="https://enseirb-matmeca.bordeaux-inp.fr/fr">ENSEIRB-MATMECA</a>,
-                    Bordeaux, France 🇫🇷.
-                </li>
-                <li>
-                    <strong>Jan. - Jun. 2024</strong> : Academic exchange in Computer Science at
-                    <a href="https://www.rtu.lv/en"> Riga Technical University</a>, Riga, Latvia 🇱🇻.
-                </li>
-                <li>
-                    <strong>2020 - 2022</strong> : A 2-year intensive math and physics course in preparation
-                    for the selective entrance examination to French engineering schools at
-                    <a href="https://www.site.ac-aix-marseille.fr/lyc-thiers/spip/">
-                        Lycée Thiers</a
-                    >, Marseille, France 🇫🇷.
-                </li>
-                <li>
-                    <strong>2017 - 2020</strong> : Baccalauréat Scientifique (equivalent to High School
-                    Diploma in sciences with distinction) at
-                    <a
-                        href="https://www.site.ac-aix-marseille.fr/lyc-honnorat-barcelonnette/spip/?"
-                    >
-                        Lycée André Honnorat</a
-                    >, Barcelonnette, France 🇫🇷.
-                </li>
-            </ul>
-        </div>
-        <div class="section">
-            <h2>Skills</h2>
-            <ul>
-                <li>
-                    <strong>Programming languages</strong> : Python, C, C++, C#, Java, Kotlin (Android),
-                    JavaScript, Shell.
-                </li>
-                <li>
-                    <strong>AI</strong> : PyTorch, Scikit-Learn
-                </li>
-                <li>
-                    <strong>Front-end</strong> : HTML, CSS, Astro, React.
-                </li>
-                <li>
-                    <strong>Back-end</strong> : Node.js, Express, PHP, Postman.
-                </li>
-                <li>
-                    <strong>Databases</strong> : SQL, PostgreSQL, MySQL, Oracle.
-                </li>
-                <li>
-                    <strong>Tools</strong> : Linux, Git, VSCode, Android Studio, Apache, Latex.
-                </li>
-            </ul>
-        </div>
-        <div class="section">
-            <h2>Contact</h2>
-            <div class="boxes">
-                <a href="mailto:romain.pierre434@gmail.com">
-                    <div class="box">By mail 📬</div>
-                </a>
-                <a href="https://www.linkedin.com/in/romainpierre7/" target="_blank">
-                    <div class="box">On LinkedIn 🌐</div>
-                </a>
+            <div class="project-cards">
+                <ul>
+                    {
+                        allExperienceCards.map((post: ExperienceCard) =>
+                            i++ % 2 === 0 ? (
+                                <ExperienceCardLeft
+                                    title={post.frontmatter.title}
+                                    image={post.frontmatter.image}
+                                    description={post.frontmatter.description}
+                                    date={post.frontmatter.date}
+                                    link={post.frontmatter.link}
+                                />
+                            ) : (
+                                <ExperienceCardRight
+                                    title={post.frontmatter.title}
+                                    image={post.frontmatter.image}
+                                    description={post.frontmatter.description}
+                                    date={post.frontmatter.date}
+                                    link={post.frontmatter.link}
+                                />
+                            )
+                        )
+                    }
+                </ul>
             </div>
-            <div class="boxes">
-                <a href="/Portfolio/projects/">
-                    <div class="box">See my projects 💻</div>
-                </a>
+
+            <div class="section">
+                <h2>Education</h2>
+                <div class="project-cards">
+                    <ul>
+                        {
+                            allEducationCards.map((post: ExperienceCard) =>
+                                i++ % 2 === 0 ? (
+                                    <ExperienceCardLeft
+                                        title={post.frontmatter.title}
+                                        image={post.frontmatter.image}
+                                        description={post.frontmatter.description}
+                                        date={post.frontmatter.date}
+                                        link={post.frontmatter.link}
+                                    />
+                                ) : (
+                                    <ExperienceCardRight
+                                        title={post.frontmatter.title}
+                                        image={post.frontmatter.image}
+                                        description={post.frontmatter.description}
+                                        date={post.frontmatter.date}
+                                        link={post.frontmatter.link}
+                                    />
+                                )
+                            )
+                        }
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2 id="skills">Skills</h2>
+
+                    <h3 class="left-align">🔨 Programming languages:</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=py" alt="Python" />
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=c" alt="C" />
+                            <span>C</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=cpp" alt="C++" />
+                            <span>C++</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=cs" alt="C#" />
+                            <span>C#</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=dotnet" alt="dotnet" />
+                            <span>.NET</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=java" alt="Java" />
+                            <span>Java</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=kotlin" alt="Kotlin" />
+                            <span>Kotlin</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=js" alt="Javascript" />
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=ts" alt="Typescript" />
+                            <span>TypeScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=bash" alt="bash" />
+                            <span>Bash</span>
+                        </div>
+                    </div>
+
+                    <h3 class="left-align">🧠 AI:</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=pytorch" alt="PyTorch" />
+                            <span>PyTorch</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=tensorflow" alt="TensorFlow" />
+                            <span>TensorFlow</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=sklearn" alt="Scikit-learn" />
+                            <span>ScikitLearn</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=opencv" alt="OpenCV" />
+                            <span>OpenCV</span>
+                        </div>
+                    </div>
+
+                    <h3 class="left-align">🎨 Front-end:</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=html" alt="HTML" />
+                            <span>HTML</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=css" alt="CSS" />
+                            <span>CSS</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=react" alt="React" />
+                            <span>React</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=astro" alt="Astro" />
+                            <span>Astro</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=selenium" alt="Selenium" />
+                            <span>Selenium</span>
+                        </div>
+                    </div>
+
+                    <h3 class="left-align">🚀 Back-end:</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=nodejs" alt="Node.js" />
+                            <span>Node.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=express" alt="Express.js" />
+                            <span>Express.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=php" alt="PHP" />
+                            <span>PHP</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=postman" alt="Postman" />
+                            <span>Postman</span>
+                        </div>
+                    </div>
+
+                    <h3 class="left-align">📁 Databases:</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=postgres" alt="PostgreSQL" />
+                            <span>PostgreSQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=mysql" alt="MySQL" />
+                            <span>MySQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=mongodb" alt="MongoDB" />
+                            <span>MongoDB</span>
+                        </div>
+                    </div>
+
+                    <h3 class="left-align">🔎 Others:</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=git" alt="Git" />
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=linux" alt="Linux" />
+                            <span>Linux</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=arch" alt="Arch Linux" />
+                            <span>Arch</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=ubuntu" alt="Ubuntu" />
+                            <span>Ubuntu</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=windows" alt="Windows" />
+                            <span>Windows</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=vscode" alt="VS Code" />
+                            <span>VS Code</span>
+                        </div>
+                        <div class="skill-item">
+                            <img
+                                src="https://skillicons.dev/icons?i=androidstudio"
+                                alt="Android Studio"
+                            />
+                            <span>Android Studio</span>
+                        </div>
+                        <div class="skill-item">
+                            <img src="https://skillicons.dev/icons?i=latex" alt="LaTeX" />
+                            <span>LaTeX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Contact</h2>
+                    <div class="boxes">
+                        <a href="mailto:romain.pierre434@gmail.com">
+                            <div class="box">By mail 📬</div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/romainpierre7/" target="_blank">
+                            <div class="box">On LinkedIn 🌐</div>
+                        </a>
+                    </div>
+                    <div class="boxes">
+                        <a href="/Portfolio/projects/">
+                            <div class="box">See my projects 💻</div>
+                        </a>
+                    </div>
+                </div>
             </div>
+            <div class="spacer"></div>
         </div>
+
+        <style>
+            .container {
+                width: 90%;
+                margin: auto auto;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            .section h2 {
+                text-align: center;
+                font-size: 30px;
+                text-decoration: underline;
+            }
+
+            .section h3 {
+                font-size: 25px;
+                margin-bottom: 12px;
+            }
+
+            ul {
+                list-style: none;
+                margin: 0, auto;
+                padding: 0;
+            }
+
+            h1 {
+                text-align: center;
+            }
+
+            .project-cards {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .project-cards {
+                list-style: none;
+                margin: 0, auto;
+                padding: 0;
+            }
+
+            .box {
+                border: #64ffda 2px solid;
+                display: inline-block;
+                text-align: center;
+                padding: 15px 20px;
+                font-size: 1.2rem;
+                font-weight: bold;
+                text-transform: uppercase;
+                position: relative;
+                margin: 1rem 2rem;
+            }
+
+            .boxes a {
+                color: #64ffda;
+                display: inline-block;
+                text-align: center;
+                text-decoration: none;
+                font-size: 1.2rem;
+                font-weight: bold;
+                text-transform: uppercase;
+                position: relative;
+            }
+
+            .box:hover {
+                transform: translateY(-2px);
+            }
+
+            .spacer {
+                height: 2rem;
+            }
+
+            .section {
+                margin: 20px;
+            }
+
+            .left-align {
+                text-align: left;
+                margin-bottom: 10px;
+            }
+
+            .skills-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 40px;
+                margin-bottom: 50px;
+            }
+
+            .skill-item {
+                display: flex;
+                align-items: center;
+            }
+
+            .skill-item img {
+                width: 40px;
+                height: 40px;
+                margin-right: 8px;
+            }
+
+            .skill-item span {
+                font-size: 18px;
+                color: #ffffff;
+            }
+        </style>
     </div>
-    <div class="spacer"></div>
 </BaseLayout>
-
-<style>
-    .container {
-        width: 90%;
-        margin: auto auto;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-
-    .section h2 {
-        text-align: left;
-        text-decoration: underline;
-    }
-
-    .section ul {
-        text-align: left;
-    }
-
-    .section ul li {
-        margin-bottom: 1rem;
-    }
-    .section ul li ul li {
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .section ul li a {
-        text-decoration: none;
-        color: #64ffda;
-    }
-
-    .section ul li a:hover {
-        text-decoration: underline;
-    }
-
-    .box {
-        border: #64ffda 2px solid;
-        display: inline-block;
-        text-align: center;
-        padding: 15px 20px;
-        font-size: 1.2rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        position: relative;
-        margin: 1rem 2rem;
-    }
-
-    .boxes a {
-        color: #64ffda;
-        display: inline-block;
-        text-align: center;
-        text-decoration: none;
-        font-size: 1.2rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        position: relative;
-    }
-
-    .box:hover {
-        transform: translateY(-2px);
-    }
-
-    .spacer {
-        height: 2rem;
-    }
-</style>
