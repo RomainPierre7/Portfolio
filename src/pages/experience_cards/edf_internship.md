@@ -6,7 +6,7 @@ description: '1-month internship at Électricité de France (EDF) , Rousset, Fra
     Discovering and supporting teams in the hydroelectricity business.
 '
 date: 'Jun. 2023'
-image: '/Portfolio/images/logo-EDF.jpg'
+image: '/Portfolio/images/logo_edf.png'
 link: 'https://www.edf.fr/groupe-edf'
 tags: ["Python", "Pygame", "Game"]
 order: 50
